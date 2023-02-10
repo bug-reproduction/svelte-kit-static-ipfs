@@ -1,38 +1,22 @@
-# create-svelte
+# Step to reproduce
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+1. `pnpm i` (install dependencies)
+2. `pnpm build` (build a static, pre-rendered website using adapter-static into the "build" folder)
+3. `pnpm serve` (serve the "build" folder using an emulator of an ipfs node)
 
-## Creating a project
+Navigate to http://localhost:8080 and you ll have a perfectly working website
 
-If you're seeing this, you've probably already done this step. Congrats!
+Now navigate to http://localhost:8080/ipfs/whatever/ and you ll notice some issues:
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- Home page is not higligthed
+- Clicking on "Home" will redirect you to http://localhost:8080/ instead http://localhost:8080/ipfs/whatever/
+- Clicking on "About" will redirect you to http://localhost:8080/about/ instead http://localhost:8080/ipfs/whatever/about/
+- In the console there are three 404 due to the app trying to fetch images from the root instead of `ipfs/whatever/`
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+if you navigate http://localhost:8080/ipfs/whatever/about/ directly (hit reload to ensure that) you get these issues :
 
-## Developing
+- Clicking on "Home" will redirect you to http://localhost:8080/ instead http://localhost:8080/ipfs/whatever/
+- Clicking on "About" will redirect you to http://localhost:8080/about/ instead http://localhost:8080/ipfs/whatever/about/
+- In the console there are two 404 due to the app trying to fetch images from the root instead of `ipfs/whatever/` and this result in both the svelte and github logo to fails to render
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+There is likely more issues once you factor in web worker and other features
