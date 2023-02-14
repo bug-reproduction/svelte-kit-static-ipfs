@@ -1,12 +1,10 @@
 # Step to reproduce
 
-===> Note with the fixes below, the issues listed here disapear
-
 1. `pnpm i` (install dependencies)
 2. `pnpm build` (build a static, pre-rendered website using adapter-static into the "build" folder)
 3. `pnpm serve` (serve the "build" folder using an emulator of an ipfs node)
 
-Navigate to http://localhost:8080 and you ll have a perfectly working website
+Then navigate to http://localhost:8080 and you ll have a perfectly working website
 
 Now navigate to http://localhost:8080/ipfs/whatever/ and you ll notice some issues:
 
@@ -89,3 +87,10 @@ To avoid that best is to use a function that trick the compiler that it might no
 ```
 
 see [src/lib/utils/url.ts](src/lib/utils/url.ts)
+
+## Try it
+
+1. `pnpm i` (install dependencies)
+2. `pnpm build:fixed` (build a static, pre-rendered website using adapter-static into the "build" folder)
+3. `pnpm serve` (serve the "build" folder using an emulator of an ipfs node)
+4. navigate to [http://localhost:8080/ipfs/whatever/](http://localhost:8080/ipfs/whatever/)

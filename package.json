@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"build:fixed": "pnpm build && node ipfs_fixes/inject_base.cjs && node ipfs_fixes/inject_base_in_singletons_file.cjs && node ipfs_fixes/inject_base_in_paths_file.cjs && node ipfs_fixes/relativize_pages.cjs && node ipfs_fixes/relativize_js.cjs",
 		"serve": "ipfs-emulator --only -d build -p 8080",
 		"preview": "vite preview",
 		"test": "playwright test",
