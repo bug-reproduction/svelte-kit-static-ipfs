@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pathname } from '$lib/utils/url';
 	import type { Post } from '$lib/data/blog';
 
 	export let data: { posts: Post[] };
@@ -10,7 +11,7 @@
 	{#each data.posts as post}
 		<li>
 			<h2>
-				<a href={post.path}>
+				<a href={pathname(post.path)}>
 					{post.meta.title}
 				</a>
 			</h2>
