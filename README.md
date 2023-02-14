@@ -8,7 +8,7 @@ Navigate to http://localhost:8080 and you ll have a perfectly working website
 
 Now navigate to http://localhost:8080/ipfs/whatever/ and you ll notice some issues:
 
-- Home page is not higligthed
+- Home page is not highlighted
 - Clicking on "Home" will redirect you to http://localhost:8080/ instead http://localhost:8080/ipfs/whatever/
 - Clicking on "About" will redirect you to http://localhost:8080/about/ instead http://localhost:8080/ipfs/whatever/about/
 - In the console there are three 404 due to the app trying to fetch images from the root instead of `ipfs/whatever/`
